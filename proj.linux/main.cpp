@@ -10,7 +10,7 @@ USING_NS_CC;
 
 float ccArraySum(float count) {
     CCArray* array = CCArray::create();
-    array->initWithCapacity((int)count);
+//    array->initWithCapacity((int)count); // 特に早くもならない
     for(float f = 0.0f; f < count; ++f) {
         array->addObject(new CCFloat(f));
     }
@@ -24,7 +24,7 @@ float ccArraySum(float count) {
 }
 
 float stdVectorSum(float count) {
-    std::vector<float> vec((long)count);
+    std::vector<float> vec;
     for(float f = 0.0f; f < count; ++f) {
         vec.push_back(f);
     }
@@ -32,11 +32,10 @@ float stdVectorSum(float count) {
 }
 
 float stdVectorSum2(float count) {
-    std::vector<CCFloat> vec((long)count);
+    std::vector<CCFloat> vec;
     for(float f = 0.0f; f < count; ++f) {
         vec.push_back(CCFloat(f));
     }
-    std::cout << vec[0].getValue() << std::endl;
     float sum = 0.0f;
     for(size_t i = 0; i < vec.size(); ++i) {
         sum += vec[i].getValue();
@@ -46,7 +45,7 @@ float stdVectorSum2(float count) {
 
 int main(int argc, char **argv)
 {
-    float count = 3000000.0f;
+    float count = 10000000.0f;
     {
         clock_t start = std::clock();
         std::cout << ccArraySum(count) << std::endl;

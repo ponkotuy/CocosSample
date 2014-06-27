@@ -12,6 +12,9 @@ include $(COCOS_ROOT)/cocos2dx/proj.linux/cocos2dx.mk
 SHAREDLIBS += -lcocos2d
 COCOS_LIBS = $(LIB_DIR)/libcocos2d.so
 
+CXXFLAGS = -O3
+CXX = clang++
+
 $(TARGET): $(OBJECTS) $(STATICLIBS) $(COCOS_LIBS) $(CORE_MAKEFILE_LIST)
 	@mkdir -p $(@D)
 	$(LOG_LINK)$(CXX) $(CXXFLAGS) $(OBJECTS) -o $@ $(SHAREDLIBS) $(STATICLIBS)
